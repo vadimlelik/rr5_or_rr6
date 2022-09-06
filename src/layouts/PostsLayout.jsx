@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // Librares
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 // Components
 import BackgroundGradiend from "../components/BackgroundGradient";
 import ScreenWidthWrapper from "../components/ScreenWidthWrapper";
@@ -13,6 +13,8 @@ import { getPosts } from "../store/postsSlice";
 
 const PostsLayout = ({ children }) => {
   const dispatch = useDispatch();
+  const params = useParams();
+  console.log(params);
 
   useEffect(() => {
     const loadPostData = () => {
@@ -26,8 +28,8 @@ const PostsLayout = ({ children }) => {
       <BackgroundGradiend />
       <ScreenWidthWrapper>
         <Routes>
-          <Route path={"posts" + "/:postId"} element={<PostPage />} />
-          <Route path={"posts"} element={<PostsListPage />} />
+          <Route path={":postId"} element={<PostPage />} />
+          <Route path={""} element={<PostsListPage />} />
         </Routes>
         {children}
       </ScreenWidthWrapper>
