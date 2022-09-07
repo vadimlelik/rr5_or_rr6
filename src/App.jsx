@@ -19,11 +19,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route index element={<MainPage />} />
-        <Route path="auth/*" element={<AuthLayout />}>
+        <Route path="auth" element={<AuthLayout />}>
           <Route path={"login"} element={<LoginPage />} />
           <Route path={"signup"} element={<SignUpPage />} />
         </Route>
-        <Route path="/posts/*" element={<PostsLayout />}>
+        <Route path="posts" element={<PostsLayout />}>
           <Route index element={<PostsListPage />} />
           <Route path=":postId" element={<PostPage />} />
         </Route>
