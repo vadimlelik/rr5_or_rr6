@@ -12,6 +12,7 @@ import PostsListPage from "./pages/Posts/PostsListPage";
 import PostPage from "./pages/Posts/PostPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SigupPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -27,7 +28,14 @@ function App() {
           <Route path="*" element={<Navigate to={"/auth/signUp"} />} />
         </Route>
 
-        <Route path="posts" element={<PostsLayout />}>
+        <Route
+          path="posts"
+          element={
+            <ProtectedRoute>
+              <PostsLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<PostsListPage />} />
           <Route path=":postId" element={<PostPage />} />
         </Route>
